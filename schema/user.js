@@ -51,7 +51,7 @@ const  userSchema  = mongoose.Schema({
     },
     passwordChange : {
         type :  boolean,
-         default  :  false,
+         default  :  true,
     },
     crypt : {
         type  : String,
