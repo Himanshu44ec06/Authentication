@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Himanshu44ec06/Authentication#readme",
   "dependencies": {
+    "bcrypt": "^3.0.0",
     "mongoose": "^5.2.13"
   }
 }
