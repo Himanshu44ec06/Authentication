@@ -55,7 +55,7 @@ const  userSchema  = mongoose.Schema({
     },
     crypt : {
         type  : String,
-        require : true,
+       // require : true,
         trim :  true,
         minlength : 3,        
     },
