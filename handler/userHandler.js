@@ -1,5 +1,6 @@
-const userModel =  require("../schema/user");
-const  bcrypt  = require('bcrypt'); 
+const userModel =  require("../schema/user"),
+  bcrypt  = require('bcrypt'),
+ sharedEnums = require('../common/sharedenums');
 
 
 const  UserHandler  =  (function(){
@@ -24,9 +25,12 @@ const  UserHandler  =  (function(){
                         if(!bcrypt.compareSync(userCred.password, user.password))
                             reject('');
                             
-                        if(user.status != 1)
+                        if(user.status != sharedEnums.status.UserStatusDisable){
+
                             reject('');
-                        
+
+                        }
+                            
                         resolve(user);
 
                     });
