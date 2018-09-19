@@ -9,6 +9,7 @@ const  UserHandler  =  (function(){
 
 
     controller.AddVendor = (vendorUser) => {
+        vendorUser.userType = sharedEnums.userType.Vendor;
         return  vendorUser.save();
     }
 

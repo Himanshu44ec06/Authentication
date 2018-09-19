@@ -1,6 +1,6 @@
-const mongoose = require('mongoose'),
-  validator = require('validator'),
-    jwt =  require(jsonwebtoken);
+const mongoose = require('mongoose');
+ // validator = require('validator'),
+    //jwt =  require(jsonwebtoken);
 
 const  userSchema  = mongoose.Schema({
     username  : {
@@ -9,10 +9,7 @@ const  userSchema  = mongoose.Schema({
         trim :  true,
         minlength : 3,
         unique :  true,
-        validate : {
-            
-        }
-
+       
     },
 
     password  : {
@@ -26,18 +23,18 @@ const  userSchema  = mongoose.Schema({
         type  : String,
         trim :  true,
         minlength : 3,
-        validate : {}
+       // validate : {}
         
     },
     lname : {
         type  : String,
         trim :  true,
         minlength : 3,
-        validate : {}
+       // validate : {}
         
     },
     status : {
-        type  : number,
+        type  : Number,
         trim :  true,
         
     },
@@ -47,10 +44,10 @@ const  userSchema  = mongoose.Schema({
         trim :  true,
         minlength : 3,
         unique : true,
-        validate : {}
+       // validate : {}
     },
     passwordChange : {
-        type :  boolean,
+        type :  Boolean,
          default  :  true,
     },
     crypt : {
@@ -60,7 +57,7 @@ const  userSchema  = mongoose.Schema({
         minlength : 3,        
     },
     userType : {
-        type  : int,
+        type  : Number,
         require : true,
         minlength : 3,
     }
