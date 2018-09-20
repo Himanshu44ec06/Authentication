@@ -16,10 +16,18 @@ describe("Vendor Test",()=>{
             assert(true);
             done();
         }).catch((error)=>{
-            console.log(error);
-            assert(false);
+            
+            if(error.name === "ValidationError"){
+                console.log(error.errors);
+            }
+            
+            
             done();
+            console.log(error.name)
+           
         });
+
+      
   });
 
 });

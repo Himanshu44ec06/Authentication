@@ -4,7 +4,7 @@
   "description": "authentication  user based on  roles and status ",
   "main": "index.js ",
   "scripts": {
-    "test": "mocha --recursive"
+    "test": "mocha --timeout 15000 --recursive"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,10 @@
   "homepage": "https://github.com/Himanshu44ec06/Authentication#readme",
   "dependencies": {
     "bcrypt": "^3.0.0",
-    "mongoose": "^5.2.13"
+    "body-parse": "^0.1.0",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.13",
+    "mongoose-unique-validator": "^2.0.2"
   },
   "devDependencies": {
     "chai": "^4.1.2",

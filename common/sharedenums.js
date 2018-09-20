@@ -2,7 +2,8 @@ module.exports  = {
  
     status : {
 
-        UserStatusDisable : 1 
+        UserStatusDisable : 1,
+        ServiceStatusActive :1 
     } ,
     
     userType  : {

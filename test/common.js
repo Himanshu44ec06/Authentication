@@ -24,8 +24,6 @@ describe("Testing Common Module",()=>{
             if(randomNumber1.toString().length != lengthOfNumber)
                 assert.fail('Random Number doesnot  generate of given  length number');
             
-            if(randomNumber2.toString().length != lengthOfNumber)
-                assert.fail('Random Number doesnot  generate of given  length number');
             
             if(randomNumber1 === randomNumber2)
               assert.fail('Random Number doesnot  generate  random  number');

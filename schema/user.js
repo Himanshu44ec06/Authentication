@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
  // validator = require('validator'),
     //jwt =  require(jsonwebtoken);
 
@@ -64,7 +65,7 @@ const  userSchema  = mongoose.Schema({
 
 
 });
-
+userSchema.plugin(uniqueValidator, { message: 'Error, expected {PATH} to be unique.' });
 
 const User  = mongoose.model('user',userSchema);
 module.exports = User;
