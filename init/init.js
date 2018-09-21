@@ -17,13 +17,11 @@ class  StartUp{
             var  server = new Server();
             var  app  = server.Init();
 
-            var route  = new Routes();
-            route.GetRoutes().map((route)=>{
-                server.RegisterRoutes(app,,);
-
-            });
-
-
+            var routes  = new Routes().GetRoutes();
+            for(var route  in  routes){
+                server.RegisterRoutes(app,config.basePath + route,routes[route]);
+            }
+            
             server.AddListener(app,config.ListeningPort);
 
         }

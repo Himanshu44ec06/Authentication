@@ -1,26 +1,68 @@
-const model =  require('../schema/service');
-const  ServiceHandler =  require('../handler/serviceHandler');
+const model =  require('../schema/service'),
+sharedEnums  = require('../common/sharedenums'),
+ServiceHandler =  require('../handler/serviceHandler'),
+ErrorHandler =  require('../handler/errorHandler'),
+ResponseHandler  = require('../handler/responseHandler');
 
 class ServiceController  {
  
-    serviceHandler = null;
-
+      
+    
     constructor(){
-        serviceHandler  = new ServiceHandler();
+        
+    }
+
+    GetService(req,res){
+        let serviceHandler  = new ServiceHandler();
+        let errorHandler = new ErrorHandler();
+        let responseHandler = new ResponseHandler();
+        serviceHandler.GetService().then((response)=>{
+            responseHandler.send200Respose(res,response);
+        }).catch((err)=>{
+            errorHandler
+                .sendServerError(res,
+                    {errorCode :  '00', message :  err}
+                );
+        })
     }
 
     AddService(req, res){
+       let serviceHandler  = new ServiceHandler();
+       let errorHandler = new ErrorHandler();
+       let responseHandler = new ResponseHandler();
+    
 
             var modelToSave  = new model({
                 name :  req.body.name,
                 stataus : true
             });
 
-            serviceHandler.AddService(modelToSave).then((d)=>{
-                res.send(d);
-            }).catch((err)=>{
+            if(!modelToSave.name || modelToSave.name.length < 1) 
+                errorHandler
+                .sendValidationError(res,
+                    {errorCode :  sharedEnums.errorMesaageCode.EService01}
+                );
 
-                 res.status(400).send(err);
+            serviceHandler.AddService(modelToSave).then((d)=>{
+                responseHandler.send201Respose(res,d);
+            }).catch((err)=>{
+                if(err.errors){
+                        for(var error  in err.errors){
+                            if(error == "name")
+                            {
+                                errorHandler
+                                .sendValidationError(res,
+                                    {errorCode :  sharedEnums.errorMesaageCode.EService02}
+                                );
+                                break;
+                            }
+                        }
+
+                }
+                errorHandler
+                .sendServerError(res,
+                    {errorCode :  '00', message :  err}
+                );
             });
 
 

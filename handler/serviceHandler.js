@@ -10,7 +10,7 @@ class  ServiceHandler {
     }
 
     GetService(){
-        return  serverModel.find({ });
+        return  serverModel.find({ status :  true });
     }
 
 
