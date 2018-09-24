@@ -12,6 +12,37 @@ class ServiceController  {
         
     }
 
+    
+    AlterService(req,res){
+        let serviceHandler  = new ServiceHandler();
+        let errorHandler = new ErrorHandler();
+        let responseHandler = new ResponseHandler();
+        if(!req.query.serviceId)
+            errorHandler
+            .sendValidationError(res,
+                {errorCode :  sharedEnums.errorMesaageCode.Eservice03}
+            );
+        
+        serviceHandler.GetServiceById(req.query.serviceId).then((service)=>{
+            if(!service)
+                errorHandler.sendValidationError(res,
+                        {errorCode :  sharedEnums.errorMesaageCode.Eservice03}
+                    );
+            if(req.body.status)
+                    service.status  = req.body.status;
+                    
+
+        }).catch((err)=>{
+
+            errorHandler
+                .sendServerError(res,
+                    {errorCode :  '00', message :  err}
+                );
+        });
+        
+
+    }
+
     GetService(req,res){
         let serviceHandler  = new ServiceHandler();
         let errorHandler = new ErrorHandler();
@@ -34,7 +65,7 @@ class ServiceController  {
 
             var modelToSave  = new model({
                 name :  req.body.name,
-                stataus : true
+                status : true
             });
 
             if(!modelToSave.name || modelToSave.name.length < 1) 

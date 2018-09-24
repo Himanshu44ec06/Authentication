@@ -13,6 +13,10 @@ class  ServiceHandler {
         return  serverModel.find({ status :  true });
     }
 
+    GetService(serviceId) {
+        return  serverModel.findById(serviceId);
+    }
+
 
 }
 

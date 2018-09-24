@@ -19,6 +19,7 @@ module.exports  = {
     errorMesaageCode  : {
         "EService01" : "EService01", // Service  name is  not correct
         "EService02" : "EService02", // Serice  name is  not unique
+        "Eservice03" : "EService03", // Service Id not  found 
     }
 
 }

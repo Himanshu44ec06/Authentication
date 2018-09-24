@@ -7,6 +7,7 @@ var  controller  = new Controller();
 
 app.route('/').post(controller.AddService);
 app.route('/').get(controller.GetService);
-app.route('/:serviceId').get();
+app.route('/:serviceId').post(controller.AlterService);
+
 
 module.exports  =  app;
